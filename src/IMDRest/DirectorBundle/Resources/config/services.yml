@@ -1,0 +1,7 @@
+parameters:
+#    director.example.class: IMDRest\DirectorBundle\Example
+
+services:
+#    director.example:
+#        class: %director.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

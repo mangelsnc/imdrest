@@ -1,0 +1,8 @@
+director:
+    resource: "@DirectorBundle/Resources/config/routing.yml"
+    prefix:   /
+
+pelicula:
+    resource: "@PeliculaBundle/Resources/config/routing.yml"
+    prefix:   /
+

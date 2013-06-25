@@ -1,0 +1,7 @@
+parameters:
+#    pelicula.example.class: IMDRest\PeliculaBundle\Example
+
+services:
+#    pelicula.example:
+#        class: %pelicula.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
