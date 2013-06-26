@@ -1,8 +1,13 @@
+director_rest:
+    type: rest
+    resource: IMDRest\DirectorBundle\Controller\RestController
+    prefix: /rest
+
 director:
     resource: "@DirectorBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /director
 
 pelicula:
     resource: "@PeliculaBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /pelicula
 

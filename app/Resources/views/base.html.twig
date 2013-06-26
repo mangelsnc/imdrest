@@ -2,12 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}{% endblock %} :: IMDRest</title>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/pelicula/css/bootstrap.min.css') }}" />
+		{% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
+        <script src="{{ asset('bundles/pelicula/js/angular.min.js') }}"></script>
+        <script src="{{ asset('bundles/pelicula/js/bootstrap.min.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
