@@ -38,28 +38,28 @@ class Director
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechaNacimiento", type="date")
+     * @ORM\Column(name="fechaNacimiento", type="date", nullable=true)
      */
     private $fechaNacimiento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lugarNacimiento", type="string", length=255)
+     * @ORM\Column(name="lugarNacimiento", type="string", length=255, nullable=true)
      */
     private $lugarNacimiento;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="pais", type="integer")
+     * @ORM\Column(name="pais", type="string", length=255, nullable=true)
      */
     private $pais;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="bio", type="text")
+     * @ORM\Column(name="bio", type="text", nullable=true)
      */
     private $bio;
 

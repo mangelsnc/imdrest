@@ -7,15 +7,37 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class DirectorType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add("nombre", "text")
-                ->add("apellidos", "text")
-                ->add("fechaNacimiento", "date")
-                ->add("lugarNacimiento", "text")
-                ->add("pais", "number")
-                ->add("bio", "textarea")
-                ->add("slug", "text")
+        $builder->add("nombre", "text", array(
+                    "description" => "Nombre del director"
+                ))
+                ->add("apellidos", "text", array(
+                    "description" => "Apellidos del director"
+                ))
+                ->add("fechaNacimiento", "date", array(
+                    "widget" => "single_text", 
+                    "description" => "Fecha de nacimiento en formato ISO",
+                    "required" => false
+                ))
+                ->add("lugarNacimiento", "text", array(
+                    "description" => "Lugar de nacimiento del director",
+                    "required" => false
+                ))
+                ->add("pais", "text", array(
+                    "description" => "Pais de origen del director",
+                    "required" => false
+                ))
+                ->add("bio", "text", array(
+                    "description" => "Breve biografia del director",
+                    "required" => false
+                ))
+                ->add("slug", "text", array(
+                    "description" => "Identificador único"
+                ))
         ;        
     }
     

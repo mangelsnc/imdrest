@@ -11,3 +11,6 @@ pelicula:
     resource: "@PeliculaBundle/Resources/config/routing.yml"
     prefix:   /pelicula
 
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
