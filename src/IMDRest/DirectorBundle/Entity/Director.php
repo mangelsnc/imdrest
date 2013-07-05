@@ -3,6 +3,7 @@
 namespace IMDRest\DirectorBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use IMDRest\PeliculaBundle\Util\Util;
 
 /**
  * Director
@@ -27,13 +28,6 @@ class Director
      * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="apellidos", type="string", length=255)
-     */
-    private $apellidos;
 
     /**
      * @var \DateTime
@@ -89,6 +83,7 @@ class Director
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
+        $this->setSlug(Util::getSlug($nombre));
     
         return $this;
     }
@@ -101,29 +96,6 @@ class Director
     public function getNombre()
     {
         return $this->nombre;
-    }
-
-    /**
-     * Set apellidos
-     *
-     * @param string $apellidos
-     * @return Director
-     */
-    public function setApellidos($apellidos)
-    {
-        $this->apellidos = $apellidos;
-    
-        return $this;
-    }
-
-    /**
-     * Get apellidos
-     *
-     * @return string 
-     */
-    public function getApellidos()
-    {
-        return $this->apellidos;
     }
 
     /**

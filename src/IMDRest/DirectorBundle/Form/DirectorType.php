@@ -15,9 +15,6 @@ class DirectorType extends AbstractType
         $builder->add("nombre", "text", array(
                     "description" => "Nombre del director"
                 ))
-                ->add("apellidos", "text", array(
-                    "description" => "Apellidos del director"
-                ))
                 ->add("fechaNacimiento", "date", array(
                     "widget" => "single_text", 
                     "description" => "Fecha de nacimiento en formato ISO",
@@ -34,9 +31,6 @@ class DirectorType extends AbstractType
                 ->add("bio", "text", array(
                     "description" => "Breve biografia del director",
                     "required" => false
-                ))
-                ->add("slug", "text", array(
-                    "description" => "Identificador único"
                 ))
         ;        
     }
