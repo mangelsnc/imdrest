@@ -9,7 +9,7 @@ class RestControllerTest extends WebTestCase
     /**
      * @test
      */
-    public function responseContentShouldBeJson()
+    public function responseContentShouldBeJsonByDefault()
     {
         $client = static::createClient();
 
@@ -63,6 +63,26 @@ class RestControllerTest extends WebTestCase
         $statusCode = $client->getResponse()->getStatusCode();
 
         $this->assertEquals($statusCode, 201);
+    }
+    
+    /**
+     * @test
+     */
+    public function itShouldReturns204WhenResourceIsEdited()
+    {
+        $client = static::createClient();
+        
+        $client->request(
+            'PUT',
+            '/rest/directors/pedro-almodovar',
+            array(),
+            array(),
+            array('CONTENT_TYPE' => 'application/json'),
+            '{"nombre":"Pedro Almodovar", "fechaNacimiento":"1953-06-12 00:00:00", "lugarNacimiento":"Zaragoza", "pais":"España", "bio":"Es un hombre bien"}'
+        );
+        $statusCode = $client->getResponse()->getStatusCode();
+        
+        $this->assertEquals($statusCode, 204);
     }
     
     /**
