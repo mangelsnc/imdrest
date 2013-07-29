@@ -109,6 +109,27 @@ class RestControllerTest extends WebTestCase
     /**
      * @test
      */    
+    public function itShouldReturns404WhenTryToEditInexistentResource()
+    {
+        $client = static::createClient();
+      
+        $client->request(
+            'PUT',
+            '/rest/director/bryan-de-palma',
+            array(),
+            array(),
+            array('CONTENT_TYPE' => 'application/json'), 
+            '{"nombreDirector":"Tito Brey"}'
+         );
+        
+        $statusCode = $client->getResponse()->getStatusCode();
+
+        $this->assertEquals($statusCode, 404);
+    }
+    
+    /**
+     * @test
+     */    
     public function itShouldReturns405WhenMethodNotAllowed()
     {
         $client = static::createClient();
