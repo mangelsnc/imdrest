@@ -92,9 +92,7 @@ class RestController extends FOSRestController
         
         $form = $this->createForm(new DirectorType(), $director);
         
-        $data = $this->getRequest()->request->all();
-        //$children = $form->all()->all();
-        //$toBind = array_intersect_key($data, $children->all());
+        $data = $request->request->all();
         
         $form->bind($data);
         
@@ -132,7 +130,8 @@ class RestController extends FOSRestController
      *    statusCodes = {
      *      204 = "Resource updated correctly",
      *      404 = "Director Not Found",
-     *      400 = "Bad Request"
+     *      400 = "Bad Request",
+     *      500 = "Server Error"
      *    }
      * )
      */
@@ -147,7 +146,7 @@ class RestController extends FOSRestController
         }
         
         $form = $this->createForm(new DirectorType(), $director);
-        $data = $this->getRequest()->request->all();
+        $data = $request->request->all();
         $form->bind($data);
         
         if($form->isValid())
@@ -157,14 +156,6 @@ class RestController extends FOSRestController
             
             $view = View::create();
             $view->setStatusCode(204);
-            $view->setHeader(
-                "Location",
-                $this->generateUrl(
-                    'get_director', 
-                    array('slug' => $director->getSlug()),
-                    true
-                )
-            );
             
             return $this->handleView($view);
         }
