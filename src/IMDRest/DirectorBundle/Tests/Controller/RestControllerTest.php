@@ -67,6 +67,27 @@ class RestControllerTest extends WebTestCase
     
     /**
      * @test
+     */    
+    public function itShouldReturns400WhenPostPetitionIsMalformed()
+    {
+        $client = static::createClient();
+      
+        $client->request(
+            'POST',
+            '/rest/director',
+            array(),
+            array(),
+            array('CONTENT_TYPE' => 'application/json'), 
+            '{"nombreDirector":"Pedro Almodovar"}'
+         );
+        
+        $statusCode = $client->getResponse()->getStatusCode();
+
+        $this->assertEquals($statusCode, 400);
+    }
+    
+    /**
+     * @test
      */
     public function itShouldReturns204WhenResourceIsEdited()
     {
@@ -83,6 +104,61 @@ class RestControllerTest extends WebTestCase
         $statusCode = $client->getResponse()->getStatusCode();
         
         $this->assertEquals($statusCode, 204);
+    }
+    
+    /**
+     * @test
+     */    
+    public function itShouldReturns405WhenMethodNotAllowed()
+    {
+        $client = static::createClient();
+      
+        $client->request(
+            'PUT',
+            '/rest/director',
+            array(),
+            array(),
+            array('CONTENT_TYPE' => 'application/json'), 
+            '{"nombreDirector":"Pedro Almodovar"}'
+         );
+        
+        $statusCode = $client->getResponse()->getStatusCode();
+
+        $this->assertEquals($statusCode, 405);
+    }
+    
+    /**
+     * @test
+     */    
+    public function itShouldReturns400WhenPutPetitionIsMalformed()
+    {
+        $client = static::createClient();
+      
+        $client->request(
+            'PUT',
+            '/rest/directors/pedro-almodovar',
+            array(),
+            array(),
+            array('CONTENT_TYPE' => 'application/json'), 
+            '{"nombreDirector":"Pedro Almodovar"}'
+         );
+        
+        $statusCode = $client->getResponse()->getStatusCode();
+
+        $this->assertEquals($statusCode, 400);
+    }
+    
+     /**
+     * @test
+     */    
+    public function itShouldReturns404WhenTryToDeleteInexistentResource()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('DELETE', '/rest/directors/bryan-de-palma');
+        $statusCode = $client->getResponse()->getStatusCode();
+
+        $this->assertEquals($statusCode, 404);
     }
     
     /**
