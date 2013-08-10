@@ -1,3 +1,8 @@
+site:
+    resource: "@SiteBundle/Controller/DefaultController.php"
+    prefix:   /
+    type: annotation
+
 director_rest:
     type: rest
     resource: IMDRest\DirectorBundle\Controller\RestController
@@ -5,11 +10,12 @@ director_rest:
 
 director:
     resource: "@DirectorBundle/Resources/config/routing.yml"
-    prefix:   /director
+    prefix:   /directores
 
 pelicula:
-    resource: "@PeliculaBundle/Resources/config/routing.yml"
-    prefix:   /pelicula
+    resource: "@PeliculaBundle/Controller/PeliculaController.php"
+    type: annotation
+    prefix: /peliculas
 
 NelmioApiDocBundle:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
