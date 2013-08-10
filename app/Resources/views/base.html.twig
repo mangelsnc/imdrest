@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+        {% block metas %}{% endblock %}
+        
         <title>{% block title %}{% endblock %} :: IMDRest</title>
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/pelicula/css/bootstrap.min.css') }}" />
-		{% block stylesheets %}{% endblock %}
+        
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/site/css/bootstrap.min.css') }}" />
+        <link href="{{ asset('bundles/site/css/bootstrap-responsive.min.css') }}" rel="stylesheet">        
+		{% block stylesheets %}{% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
-        <script src="{{ asset('bundles/pelicula/js/angular.min.js') }}"></script>
-        <script src="{{ asset('bundles/pelicula/js/bootstrap.min.js') }}"></script>
+        
+        <script src="{{ asset('bundles/site/js/angular.min.js') }}"></script>
+        <script src="{{ asset('bundles/site/js/bootstrap.min.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
