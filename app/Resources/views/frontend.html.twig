@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/site/css/frontend.css') }}" />
+{% endblock %}
+
+{% block body %}
+<article id="page">
+	<header id="page-header">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<a href="#" class="brand">IMDRest</a>
+				<ul class="nav">
+					<li><a href="#">Peliculas</a></li>
+					<li><a href="#">Directores</a></li>
+					<li><a href="{{ path('nelmio_api_doc_index') }}">API</a></li>
+				</ul>
+				<div class="nav-collapse collapse">
+					<form class="navbar-form form-inline navbar-text pull-right">
+						<input id="input-login" name="_username" placeholder="Email" type="email" class="input-small" />
+						<input id="input-password" name="_password" placeholder="Password" type="password" class="input-small" />
+						<label for="input-remember-me" class="checkbox">
+							<input type="checkbox" id="input-remember-me" name="_remember" /> No cerrar mi sesión
+						</label>
+						<button type="submit" class="btn btn-warning btn-small">Acceder</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="hero-unit">
+			<h1>IMDRest</h1>
+			<p>IMDRest, el primer portal de cine en ofrecer un API totalmente abierta de acceso a sus contenidos.</p>
+		</div>
+	</header>
+	<div id="page-content" class="container-fluid">
+		<div class="row-fluid">
+			<div class="span3">
+				{% include 'include/sidebar.html.twig' %}
+			</div>
+			<div class="span9">
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+	</div>
+	<footer id="page-footer"></footer>
+</article>
+{% endblock %}
