@@ -3,11 +3,18 @@
 namespace IMDRest\PeliculaBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class PeliculaController extends Controller
 {
-    public function indexAction($name)
+    /**
+     * @Route("/", name="peliculas_listado")
+     * @Template("PeliculaBundle:Default:index.html.twig")
+     */    
+    public function indexAction()
     {
-        return $this->render('PeliculaBundle:Default:index.html.twig', array('name' => $name));
+        $peliculas = array();
+        return array('peliculas' => $peliculas);
     }
 }
